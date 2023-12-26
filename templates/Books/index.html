@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Book Store</title>
+  </head>
+  <body>
+    <h1 class="text-center text-3xl my-8">Our Programming Books</h1>
+
+    <div class="grid grid-cols-4 gap-4 ">
+      {% for book in Books %}
+      <div class="justify-self-center">
+        <h3 class="my-1">{{book.name}}</h3>
+        <img src="{{book.ImageUrl}}" width="200px" />
+      </div>
+      {% endfor %}
+    </div>
+
+  </body>
+</html>
