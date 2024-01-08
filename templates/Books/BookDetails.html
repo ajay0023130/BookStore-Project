@@ -1,11 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Details </title>
-</head>
-<body>
-    <h1>Single book</h1>
-</body>
-</html>
+{% extends 'Layout/base.html' %} {% block body %}
+
+<div class="container mt-5">
+  <a href="/">Back</a>
+  <div class="row">
+    <div class="col">
+      <img src="{{singleBook.ImageUrl}}" width="80%" />
+    </div>
+    <div class="col">
+      Subtitle:
+      <h5>{{singleBook.subtitle}}</h5>
+      Description:
+      <h6>{{singleBook.description}}</h6>
+      Pages:
+      <p>{{singleBook.pages}}</p>
+      Publisher:
+      <h4>{{singleBook.publisher}}</h4>
+      Published:
+      <h4>{{singleBook.published}}</h4>
+
+      <div class="mt-5">
+        <form method="POST">
+          {% csrf_token %}
+          <label class="form-label"> Write Book Review :</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="write your review" rows="3"
+            name="review"></textarea>
+          <button class="btn btn-primary mt-2" type="submit">Submit</button>
+        </form>
+      </div>
+
+      <div>
+        {% if reviews_for_book %}
+        <h3> all reviews by users</h3>
+        {% for book in  reviews_for_book %}
+        <p>{{book.review}}</p>
+        {% endfor %}
+
+        {% else %}
+
+        {% endif  %}
+          
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
